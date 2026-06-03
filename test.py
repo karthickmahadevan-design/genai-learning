@@ -30,6 +30,27 @@ resp = claude.messages.create(
     max_tokens=20,
     messages=[{"role": "user", "content": "Say: stack verified"}]
 )
+
 print(f"✅ Claude API: {resp.content[0].text}")
+
+
+# Test 5 — OpenAI API
+import openai
+
+client = openai.OpenAI()
+
+response = client.chat.completions.create(
+    model="gpt-4o-mini",  # cheapest, good enough for learning
+    messages=[{"role": "user", "content": "Say: OpenAI stack verified"}],
+    max_tokens=20
+)
+
+print(type(response))
+print(response)
+
+print(f"✅ OpenAI API: {response.choices[0].message.content}")
+
+
+
 
 print("\n── All systems go. Ready to build. ──")
